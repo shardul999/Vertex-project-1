@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://diotr4yibssco"]
+
+[ext_resource type="Script" uid="uid://b7rjtmxc8ydtx" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://bsula8gupmdht" path="res://scripts/level_generator.gd" id="2_gen"]
+[ext_resource type="Script" uid="uid://uujjosvdyy3x" path="res://scripts/lava_wall.gd" id="3_lava"]
+[ext_resource type="Texture2D" uid="uid://bs3wlr6fl7dc7" path="res://assets/Spikeball.png" id="3_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://bacrhhbije6p7" path="res://assets/filled terain.png" id="3_tipki"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="4_player"]
+[ext_resource type="Script" uid="uid://gvta60oaunsi" path="res://scripts/hud.gd" id="5_hud"]
+[ext_resource type="Texture2D" uid="uid://v566nlc0i2s3" path="res://assets/sheep_animation_idle_spritesheet.png" id="5_o6xl0"]
+
+[node name="Main" type="Node2D" unique_id=968084306]
+process_mode = 3
+script = ExtResource("1_main")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=391390228]
+layer = -1
+
+[node name="World" type="Node2D" parent="." unique_id=1965151114]
+process_mode = 1
+script = ExtResource("2_gen")
+ground_texture = ExtResource("3_tipki")
+saw_texture = ExtResource("3_o6xl0")
+
+[node name="Player" parent="." unique_id=649931196 instance=ExtResource("4_player")]
+process_mode = 1
+position = Vector2(120, 350)
+texture = ExtResource("5_o6xl0")
+
+[node name="LavaWall" type="Node2D" parent="." unique_id=678032642]
+process_mode = 1
+z_index = 5
+script = ExtResource("3_lava")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1600576744]
+position = Vector2(400, 270)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=168008821]
+script = ExtResource("5_hud")
